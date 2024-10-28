@@ -1,7 +1,6 @@
 package com.example.ecom2.models;
 
 import java.util.List;
-import java.util.Vector;
 import java.util.UUID;
 
 import jakarta.persistence.Column;

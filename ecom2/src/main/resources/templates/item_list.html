@@ -64,7 +64,10 @@
         </div>
 
         <div class="cart-btn">
-            <button type="button" class="btn" onclick="location.href='@{/cart}'">Cart</button>
+            <button type="button" class="btn" 
+            th:onclick="'location.href=\'' + @{/cart} + '\';'" >
+                Cart
+            </button>
         </div>
         <h2>Item List</h2>
         <table>

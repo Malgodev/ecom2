@@ -44,10 +44,44 @@ public class CartController {
 
             if (!cart.getItems().contains(item)) {
                 cart.getItems().add(item);
+                cart.setTotal(cart.getTotal() + item.getPrice());
                 cartService.save(cart);              
             }
         }
         return "redirect:/items";
+    }
+
+    @GetMapping("/remove-from-cart/{itemId}")
+    public String RemoveFromCart(@PathVariable UUID itemId, Model model) {
+        Customer currentCustomer = getCurrentCustomer();
+        Item item = itemService.findById(itemId);
+
+        if (item != null) {
+            Cart cart = cartService.getCartByCustomer(currentCustomer);
+
+            if (cart.getItems().contains(item)) {
+                cart.getItems().remove(item);
+                cart.setTotal(cart.getTotal() - item.getPrice());
+                cartService.save(cart);              
+            }
+        }
+        return "redirect:/cart";
+    }
+
+
+    @GetMapping("/cart")
+    public String viewCart(Model model) {
+        Customer currentCustomer = getCurrentCustomer();
+        Cart cart = cartService.getCartByCustomer(currentCustomer);
+    
+        if (cart != null) {
+            model.addAttribute("cart", cart);
+            model.addAttribute("items", cart.getItems());
+        } else {
+            model.addAttribute("items", new Vector<Item>());
+        }
+    
+        return "cart";
     }
 
     private Customer getCurrentCustomer() {
