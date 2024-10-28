@@ -1,0 +1,138 @@
+2024-10-28 15:29:37.713980+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table [*]order (\000d\000a        id varchar(255) not null,\000d\000a        total float(53) not null,\000d\000a        customer_id varchar(255) not null,\000d\000a        payment_id varchar(255) not null,\000d\000a        shipment_id varchar(255) not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table order (
+        id varchar(255) not null,
+        total float(53) not null,
+        customer_id varchar(255) not null,
+        payment_id varchar(255) not null,
+        shipment_id varchar(255) not null,
+        primary key (id)
+    ) [42001-224]
+2024-10-28 15:29:37.740611+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       drop constraint if exists UKm6q2ofkj1g5aobtb2p00ajpqg"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       drop constraint if exists UKm6q2ofkj1g5aobtb2p00ajpqg [42001-224]
+2024-10-28 15:29:37.741613+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint UKm6q2ofkj1g5aobtb2p00ajpqg unique (customer_id)"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint UKm6q2ofkj1g5aobtb2p00ajpqg unique (customer_id) [42001-224]
+2024-10-28 15:29:37.741613+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       drop constraint if exists UKjv31y8rpkce8du4fbesb6muv8"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       drop constraint if exists UKjv31y8rpkce8du4fbesb6muv8 [42001-224]
+2024-10-28 15:29:37.742613+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint UKjv31y8rpkce8du4fbesb6muv8 unique (payment_id)"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint UKjv31y8rpkce8du4fbesb6muv8 unique (payment_id) [42001-224]
+2024-10-28 15:29:37.742613+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       drop constraint if exists UK62rhdeu93cr3562m5qqbap78h"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       drop constraint if exists UK62rhdeu93cr3562m5qqbap78h [42001-224]
+2024-10-28 15:29:37.743611+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint UK62rhdeu93cr3562m5qqbap78h unique (shipment_id)"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint UK62rhdeu93cr3562m5qqbap78h unique (shipment_id) [42001-224]
+2024-10-28 15:29:37.757612+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint FKb8tboo4d95mh8gavvovwbb7vg \000d\000a       foreign key (customer_id) \000d\000a       references customer"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint FKb8tboo4d95mh8gavvovwbb7vg 
+       foreign key (customer_id) 
+       references customer [42001-224]
+2024-10-28 15:29:37.764617+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint FKal550jx92fbea8sry5q4siyn1 \000d\000a       foreign key (payment_id) \000d\000a       references payment"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint FKal550jx92fbea8sry5q4siyn1 
+       foreign key (payment_id) 
+       references payment [42001-224]
+2024-10-28 15:29:37.769609+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint FK4q82194rdgrp2cd6g07hy1ntj \000d\000a       foreign key (shipment_id) \000d\000a       references shipment"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint FK4q82194rdgrp2cd6g07hy1ntj 
+       foreign key (shipment_id) 
+       references shipment [42001-224]
+2024-10-28 15:29:37.778610+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists order_item \000d\000a       add constraint FKt6wv8m7eshksp5kp8w4b2d1dm \000d\000a       foreign key (order_id) \000d\000a       references [*]order"; expected "identifier"; SQL statement:
+
+    alter table if exists order_item 
+       add constraint FKt6wv8m7eshksp5kp8w4b2d1dm 
+       foreign key (order_id) 
+       references order [42001-224]
+2024-10-28 15:30:04.579310+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table [*]order (\000d\000a        id varchar(255) not null,\000d\000a        total float(53) not null,\000d\000a        customer_id varchar(255) not null,\000d\000a        payment_id varchar(255) not null,\000d\000a        shipment_id varchar(255) not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table order (
+        id varchar(255) not null,
+        total float(53) not null,
+        customer_id varchar(255) not null,
+        payment_id varchar(255) not null,
+        shipment_id varchar(255) not null,
+        primary key (id)
+    ) [42001-224]
+2024-10-28 15:30:04.599311+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       drop constraint if exists UKm6q2ofkj1g5aobtb2p00ajpqg"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       drop constraint if exists UKm6q2ofkj1g5aobtb2p00ajpqg [42001-224]
+2024-10-28 15:30:04.600314+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint UKm6q2ofkj1g5aobtb2p00ajpqg unique (customer_id)"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint UKm6q2ofkj1g5aobtb2p00ajpqg unique (customer_id) [42001-224]
+2024-10-28 15:30:04.601323+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       drop constraint if exists UKjv31y8rpkce8du4fbesb6muv8"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       drop constraint if exists UKjv31y8rpkce8du4fbesb6muv8 [42001-224]
+2024-10-28 15:30:04.602314+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint UKjv31y8rpkce8du4fbesb6muv8 unique (payment_id)"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint UKjv31y8rpkce8du4fbesb6muv8 unique (payment_id) [42001-224]
+2024-10-28 15:30:04.602314+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       drop constraint if exists UK62rhdeu93cr3562m5qqbap78h"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       drop constraint if exists UK62rhdeu93cr3562m5qqbap78h [42001-224]
+2024-10-28 15:30:04.603312+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint UK62rhdeu93cr3562m5qqbap78h unique (shipment_id)"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint UK62rhdeu93cr3562m5qqbap78h unique (shipment_id) [42001-224]
+2024-10-28 15:30:04.616803+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint FKb8tboo4d95mh8gavvovwbb7vg \000d\000a       foreign key (customer_id) \000d\000a       references customer"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint FKb8tboo4d95mh8gavvovwbb7vg 
+       foreign key (customer_id) 
+       references customer [42001-224]
+2024-10-28 15:30:04.625888+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint FKal550jx92fbea8sry5q4siyn1 \000d\000a       foreign key (payment_id) \000d\000a       references payment"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint FKal550jx92fbea8sry5q4siyn1 
+       foreign key (payment_id) 
+       references payment [42001-224]
+2024-10-28 15:30:04.630894+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists [*]order \000d\000a       add constraint FK4q82194rdgrp2cd6g07hy1ntj \000d\000a       foreign key (shipment_id) \000d\000a       references shipment"; expected "identifier"; SQL statement:
+
+    alter table if exists order 
+       add constraint FK4q82194rdgrp2cd6g07hy1ntj 
+       foreign key (shipment_id) 
+       references shipment [42001-224]
+2024-10-28 15:30:04.637907+07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    alter table if exists order_item \000d\000a       add constraint FKt6wv8m7eshksp5kp8w4b2d1dm \000d\000a       foreign key (order_id) \000d\000a       references [*]order"; expected "identifier"; SQL statement:
+
+    alter table if exists order_item 
+       add constraint FKt6wv8m7eshksp5kp8w4b2d1dm 
+       foreign key (order_id) 
+       references order [42001-224]

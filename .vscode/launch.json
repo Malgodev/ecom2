@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Ecom2Application",
+            "request": "launch",
+            "mainClass": "com.example.ecom2.Ecom2Application",
+            "projectName": "ecom2"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Ecom2Application<ecom2>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.b21dcat113.ecom2.Ecom2Application",
+            "projectName": "ecom2",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
