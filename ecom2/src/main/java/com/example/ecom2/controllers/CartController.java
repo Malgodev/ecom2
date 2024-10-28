@@ -61,23 +61,6 @@ public class CartController {
         return "redirect:/items";
     }
 
-    @GetMapping("/remove-from-cart/{itemId}")
-    public String RemoveFromCart(@PathVariable UUID itemId, Model model) {
-        Customer currentCustomer = getCurrentCustomer();
-        Item item = itemService.findById(itemId);
-
-        if (item != null) {
-            Cart cart = cartService.getCartByCustomer(currentCustomer);
-
-            if (cart.getItems().contains(item)) {
-                cart.getItems().remove(item);
-                cart.setTotal(cart.getTotal() - item.getPrice());
-                cartService.save(cart);              
-            }
-        }
-        return "redirect:/cart";
-    }
-
 
     @GetMapping("/cart")
     public String viewCart(Model model) {

@@ -76,6 +76,7 @@
                     <th>Name</th>
                     <th>Price</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -86,6 +87,12 @@
                         <button type="button" class="btn" 
                         th:onclick="'location.href=\'' + @{/add-to-cart/{id}(id=${item.id})} + '\';'" >
                             Add to cart
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" 
+                        th:onclick="'location.href=\'' + @{/comment-rate/{id}(id=${item.id})} + '\';'" >
+                            Review item
                         </button>
                     </td>
                 </tr>
