@@ -1,6 +1,8 @@
 package com.example.ecom2.models;
 
 import java.util.List;
+import java.util.Vector;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,7 +31,7 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", updatable = false, nullable = false)
-    private String id;
+    private UUID id;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", nullable = false)

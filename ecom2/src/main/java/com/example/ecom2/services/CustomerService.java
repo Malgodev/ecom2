@@ -2,6 +2,8 @@ package com.example.ecom2.services;
 
 import com.example.ecom2.models.Customer;
 import com.example.ecom2.daos.CustomerDAO;
+
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class CustomerService {
     @Autowired
     public CustomerService(CustomerDAO customerRepository) {
         this.customerRepository = customerRepository;
+    }
+
+    public Optional<Customer> getFirstCustomer() {
+        return customerRepository.findAll().stream().findFirst();
     }
 
     public Customer saveCustomer(Customer customer) {
