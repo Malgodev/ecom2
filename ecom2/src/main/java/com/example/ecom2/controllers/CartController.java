@@ -2,18 +2,25 @@ package com.example.ecom2.controllers;
 
 import java.util.UUID;
 import java.util.Vector;
+
+import org.hibernate.annotations.Any;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
 import com.example.ecom2.models.Cart;
 import com.example.ecom2.models.Customer;
 import com.example.ecom2.models.Item;
+import com.example.ecom2.models.Order;
+import com.example.ecom2.models.Payment;
+import com.example.ecom2.models.Shipment;
 import com.example.ecom2.services.CartService;
 import com.example.ecom2.services.CustomerService;
 import com.example.ecom2.services.ItemService;
+import com.example.ecom2.services.OrderService;
 
 @Controller
 public class CartController {
@@ -25,6 +32,9 @@ public class CartController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private OrderService orderService;
 
     @GetMapping("/add-to-cart/{itemId}")
     public String addToCart(@PathVariable UUID itemId, Model model) {
@@ -82,6 +92,28 @@ public class CartController {
         }
     
         return "cart";
+    }
+
+    @GetMapping("/checkout")
+    public String checkout(@RequestParam String paymentMethod, @RequestParam String shippingType, Model model) {
+        Customer currentCustomer = getCurrentCustomer();
+        Cart cart = cartService.getCartByCustomer(currentCustomer);
+
+        String tmp = """
+                Customer: %s order: \n
+                %s\n
+                using %s and %s.
+                """;
+
+        String items = "";
+
+        for (Item item : cart.getItems()){
+            items += "\t" + item.getName() + ": " + item.getPrice() + "\n";
+        }
+
+        System.out.format(tmp, currentCustomer.getName(), items, paymentMethod, shippingType);
+
+        return "redirect:/items";
     }
 
     private Customer getCurrentCustomer() {
