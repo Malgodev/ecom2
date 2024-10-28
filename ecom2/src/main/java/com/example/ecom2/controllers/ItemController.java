@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -38,10 +39,23 @@ public class ItemController {
         return "redirect:/items";
     }
 
+    // @GetMapping("/items")
+    // public String listItem(Model model) {
+    //     List<Item> items = itemService.getAllItems();
+    //     model.addAttribute("items", items);
+    //     return "item_list";
+    // }
+
     @GetMapping("/items")
-    public String listItem(Model model) {
-        List<Item> items = itemService.getAllItems();
+    public String getItems(@RequestParam(required = false, defaultValue = "") String search, Model model) {
+        List<Item> items;
+        if (search != null && !search.isEmpty()) {
+            items = itemService.searchItemsByName(search);
+        } else {
+            items = itemService.getAllItems();
+        }
         model.addAttribute("items", items);
+        model.addAttribute("searchQuery", search);
         return "item_list";
-    }
+    }    
 }

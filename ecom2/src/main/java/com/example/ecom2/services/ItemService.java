@@ -25,4 +25,8 @@ public class ItemService {
     public List<Item> getAllItems() {
         return itemRepository.findAll();
     }
+
+    public List<Item> searchItemsByName(String name) {
+        return itemRepository.findByNameContaining(name);
+    }
 }
