@@ -71,7 +71,7 @@
 <body>
 
     <h1>Feedback Form</h1>
-    <form action="/submit-comment" method="POST">
+    <form th:action="@{/comment-rate/{itemId}(itemId=${item.id})}" method="POST">
         <label for="comment">Comment:</label>
         <textarea id="comment" name="comment" required></textarea>
 
@@ -82,6 +82,33 @@
     </form>
 
     <h2>Previous Feedback</h2>
+    <div class="feedback-list">
+        <!-- Display previous comments -->
+        <h3>Comments</h3>
+        <div>
+            <ul>
+                <!-- Iterate through comments -->
+                <th:block th:each="comment : ${comments}">
+                    <li class="feedback-item">
+                        <p><strong>Comment:</strong> <span th:text="${comment.comment}"></span></p>
+                        <p><strong>By:</strong> <span th:text="${comment.customer.name}">Customer Name</span></p>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+
+        <h3>Ratings</h3>
+        <div>
+            <ul>
+                <th:block th:each="rating : ${ratings}">
+                    <li class="feedback-item">
+                        <p><strong>Rating:</strong> <span class="rating" th:text="${rating.stars}"></span></p>
+                        <p><strong>By:</strong> <span th:text="${rating.customer.name}">Customer Name</span></p>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </div>
 
 </body>
 </html>

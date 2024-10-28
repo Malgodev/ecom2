@@ -24,8 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/")
 public class ItemController {
@@ -58,16 +56,48 @@ public class ItemController {
     }
 
     @GetMapping("/comment-rate/{itemId}")
-    public String AddReview(@PathVariable UUID itemId, Model model) {
+    public String addReview(@PathVariable UUID itemId, Model model) {
         Customer currentCustomer = getCurrentCustomer();
         Item item = itemService.findById(itemId);
+
         List<Comment> comments;
         List<Rating> ratings;
 
         comments = commentService.getAllCommentsByItem(item);
         ratings = ratingService.getAllRatingsByItem(item);
 
-        return "redirect:/items";
+        model.addAttribute("item", item); 
+        model.addAttribute("comments", comments);
+        model.addAttribute("ratings", ratings);
+
+        return "item_detail";
+    }
+
+    @PostMapping("/comment-rate/{itemId}")
+    public String addItem(@PathVariable UUID itemId, 
+                          @RequestParam String comment, 
+                          @RequestParam int rating, 
+                          RedirectAttributes redirectAttributes) {
+        
+        Customer currentCustomer = getCurrentCustomer();
+    
+        Item item = itemService.findById(itemId);
+    
+        Comment newComment = new Comment();
+        newComment.setComment(comment);
+        newComment.setItem(item);
+        newComment.setCustomer(currentCustomer);
+        commentService.saveComment(newComment);
+    
+        Rating newRating = new Rating();
+        newRating.setStars(rating);
+        newRating.setItem(item);
+        newRating.setCustomer(currentCustomer);
+        ratingService.saveRating(newRating);
+
+        System.out.println(newComment.getComment() + " dead " + newRating.getStars());
+    
+        return "redirect:/comment-rate/" + itemId;
     }
 
     // @GetMapping("/items")
