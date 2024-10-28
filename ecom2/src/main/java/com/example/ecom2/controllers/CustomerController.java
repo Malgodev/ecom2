@@ -20,15 +20,8 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customers/add")
-    public String showAddCustomerForm(Model model) {
-        model.addAttribute("customer", new Customer());
-        return "add_customer_form";
-    }
-
     @PostMapping("/customers")
     public String addCustomer(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
-        System.out.println("Customer: " + customer);
         customerService.saveCustomer(customer);
         redirectAttributes.addFlashAttribute("success", "Customer added successfully.");
         return "redirect:/customers";
