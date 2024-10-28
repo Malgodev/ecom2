@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.example.ecom2.models.Customer;
 
 @Repository
-public interface CustomerDAO extends JpaRepository<Customer, String> {
+public interface CustomerDAO extends JpaRepository<Customer, java.util.UUID> {
 
 }

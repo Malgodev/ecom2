@@ -12,6 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import java.util.UUID;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,13 +22,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cusomters")
+@Table(name = "customer")
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", updatable = false, nullable = false)
-    private String id;
+    private UUID id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -35,12 +36,15 @@ public class Customer {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "password", nullable = false)
-    private String phoneNumber;
+    @Column(name = "phone", nullable = false)
+    private String phone;
 
     @Column(name = "address", nullable = false)
     private String address;
 
+    @Column(name = "password", nullable = false)
+    private String password;
+    
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private List<Rating> ratings;
 
